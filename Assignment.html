@@ -1,0 +1,45 @@
+    <!DOCTYPE html>
+    <html>
+        <head>
+            <title>Train Goes</title>
+        </head>
+        <body>
+            
+            <img src="train1.png" id="train">
+            <br/>
+            <button onclick="MoveTrain()" style="margin: 100px;">Move Train</button>
+            <script>
+                let img = document.querySelector("#train");
+                let img2 = document.getElementById("train");
+
+               // let curLeft = img2.getClientRects();
+                
+                img2.style.left ="1px"; // left rigth top and down is null on declaration until we assign something to it 
+                img2.style.position = "relative"; // all element by default static 
+                let view = window.innerWidth;
+                let moveDistance = 15;
+                
+               function MoveTrain()
+               {
+                var curleft = parseInt(img2.style.left);
+                
+
+                if(moveDistance + curleft > view)
+                {
+                    moveDistance = moveDistance * -1;
+                }
+                else if(curleft - moveDistance < 0 )
+                {
+                    moveDistance = Math.abs(moveDistance);
+                }
+                
+                img2.style.left = curleft + moveDistance + "px";   
+                console.log("curleft",curleft);
+                console.log("view",view);
+                console.log("moveDistance",moveDistance);
+                
+                 //img2.style.left = (curLeft + 10) + "px";
+               }
+            </script>
+        </body>
+    </html>
